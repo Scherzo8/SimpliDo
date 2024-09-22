@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 
-app = FastAPI()
 
-@app.get("/")
-def home():
+app = FastAPI(title='Todo Application', 
+              description='A complex to-do application with user authentication and task management.', 
+              version='0.1.0')
 
-    return 'Hello bitch'
+@app.get("/", summary="Root Endpoint")
+def home() -> dict: 
+
+    return {"message": "Welcome to Simplido"}
