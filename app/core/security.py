@@ -5,8 +5,10 @@ from datetime import datetime, timedelta
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from models.user import User
-from database.db import get_db
+from app.models.user import User
+from app.database.db import get_db
+
+
 
 SECRET_KEY = os.getenv("SECRET_KEY", "Test123")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
