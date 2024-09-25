@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "simplido"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 license = "mit"
@@ -12,6 +12,10 @@ fastapi = {extras = ["all"], version = "^0.115.0"}
 pydantic = "^2.9.2"
 sqlalchemy = "^2.0.35"
 asyncpg = "^0.29.0"
+python-dotenv = "^1.0.1"
+passlib = "^1.7.4"
+python-jose = "^3.3.0"
+toml = "^0.10.2"
 
 
 [build-system]
