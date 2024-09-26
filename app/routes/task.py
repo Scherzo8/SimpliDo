@@ -41,7 +41,7 @@ def read_task(db: Session = Depends(get_db), current_user: User = Depends(get_cu
         list[TaskOut]: List of tasks for the user.
     """
 
-    return get_tasks_by_user
+    return get_tasks_by_user()
 
 
 @router.put("/{task_id}", response_model=TaskOut)
@@ -75,4 +75,28 @@ def update_task(task_id: int, task: TaskCreate, db: Session = Depends(get_db), c
     db.refresh(db_task)
 
     return db_task
-            
+
+
+@router.delete("/{task_id}", response_model=dict)
+def delete_task(task_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)) -> dict:
+    """
+    API endpoint to delete a task.
+
+    Args:
+        task_id (int): The ID of the task to delete.
+        db (Session): SQLAlchemy session for database interaction.
+        current_user (User): The currently authenticated user.
+
+    Returns:
+        dict: Confirmation message.
+    """
+
+    db_task = db.query(Task).filter(Task.id == task_id, Task.owner_id == current_user.id).first()
+    
+    if not db_task:
+        raise HTTPException(status_code=404, detail="Task not found")
+
+    db.delete(db_task)
+    db.commit()
+    
+    return {"message": "Task deleted successfully"}
