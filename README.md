@@ -7,7 +7,7 @@ A simple and efficient Todo application built with FastAPI and PostgreSQL. This 
 - [Features](#features)
 - [Technologies Used](#Technologies-Used)
 - [Requirements](#requirements)
-- [Installation Instruction](#Installation-Instruction:)
+- [Installation Instruction](#Installation-Instruction)
 - [License](#license)
 
 ## Overview
@@ -52,9 +52,12 @@ In addition to core functionality, the application is structured for ease of dev
     poetry install
     ```
 
-3. **Configure environment variables:**
-    Create a `.env` file in the project root and add your database URL and Secret key:
-    `DATABASE_URL=postgresql://username:password@localhost/todo_app`
+3. **Configure environment variables:**  
+
+    Create a `.env` file in the project root and add your database URL and Secret key:  
+
+    `DATABASE_URL=postgresql://username:password@localhost/todo_app`  
+
     `SECRET_KEY="add-your-secret-key"`
 
 
